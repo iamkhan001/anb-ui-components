@@ -10,7 +10,7 @@ interface GridLayoutProps {
   itemStyle?: ViewStyle;
 }
 
-const GridLayout: React.FC<GridLayoutProps> = ({
+export const GridLayout: React.FC<GridLayoutProps> = ({
   columns,
   children,
   gap = 10,
@@ -51,5 +51,3 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 });
-
-export default GridLayout;
