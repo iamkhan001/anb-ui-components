@@ -9,7 +9,7 @@ import {
   defaultTextColor,
 } from '../defaults';
 import { formatAmountWithDecimal } from '../utils/number.utils';
-import LinearLayout from '../layouts/LinearLayout';
+import { LinearLayout } from '../layouts/LinearLayout';
 
 export interface AnbTextProps {
   text: string;
