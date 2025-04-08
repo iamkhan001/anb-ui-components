@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, type TextStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import {
   defaultBackgroundColor,
   defaultBorderColor,
@@ -22,7 +23,7 @@ export interface ButtonProps {
   borderRadius?: number;
   borderWidth?: number;
   borderColor?: string;
-  style?: object;
+  style?: ViewStyle;
   actions?: ButtonActions;
 }
 

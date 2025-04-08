@@ -1,5 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, type TextStyle } from 'react-native';
+import type { ViewStyle } from 'react-native';
 import {
   defaultCurrency,
   defaultDecimalPlaces,
@@ -14,7 +15,7 @@ export interface AnbTextProps {
   color?: string;
   fontSize?: number;
   fontWeight?: TextStyle['fontWeight'];
-  style?: object;
+  style?: ViewStyle;
   onPress?: () => void;
 }
 
