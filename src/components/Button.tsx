@@ -1,5 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, Text, type TextStyle } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  type TextStyle,
+  type ViewStyle,
+} from 'react-native';
 import {
   defaultBackgroundColor,
   defaultBorderColor,
@@ -9,7 +14,6 @@ import {
   defaultFontWeight,
   defaultPadding,
   defaultTextColor,
-  type ButtonActions,
 } from '../defaults';
 
 export interface ButtonProps {
@@ -22,8 +26,9 @@ export interface ButtonProps {
   borderRadius?: number;
   borderWidth?: number;
   borderColor?: string;
-  style?: object;
-  actions?: ButtonActions;
+  style?: ViewStyle;
+  onPress?: () => void;
+  onLongPress?: () => void;
 }
 
 export const AnbButton: React.FC<ButtonProps> = ({
@@ -37,7 +42,8 @@ export const AnbButton: React.FC<ButtonProps> = ({
   borderWidth,
   borderColor,
   style,
-  actions,
+  onPress,
+  onLongPress,
 }) => {
   const buttonStyle = {
     backgroundColor: backgroundColor || defaultBackgroundColor,
@@ -54,10 +60,8 @@ export const AnbButton: React.FC<ButtonProps> = ({
   return (
     <TouchableOpacity
       style={[buttonStyle, style]}
-      onPress={actions?.onPress}
-      onLongPress={actions?.onLongPress}
-      onPressIn={actions?.onPressIn}
-      onPressOut={actions?.onPressOut}
+      onPress={onPress}
+      onLongPress={onLongPress}
     >
       <Text style={textStyle}>{text}</Text>
     </TouchableOpacity>
