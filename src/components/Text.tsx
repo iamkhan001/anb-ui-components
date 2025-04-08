@@ -8,7 +8,8 @@ import {
   defaultFontWeight,
   defaultTextColor,
 } from '../defaults';
-import { formatAmount } from '../utils/number.utils';
+import { formatAmountWithDecimal } from '../utils/number.utils';
+import LinearLayout from '../layouts/LinearLayout';
 
 export interface AnbTextProps {
   text: string;
@@ -48,6 +49,12 @@ export interface AnbAmountProps {
   fontSize?: number;
   fontWeight?: TextStyle['fontWeight'];
   style?: object;
+  valueColor?: string;
+  valueFontSize?: number;
+  valueFontWeight?: TextStyle['fontWeight'];
+  decimalColor?: string;
+  decimalFontSize?: number;
+  decimalFontWeight?: TextStyle['fontWeight'];
 }
 
 export const AnbAmount = ({
@@ -57,6 +64,12 @@ export const AnbAmount = ({
   color,
   fontSize,
   fontWeight,
+  valueColor,
+  valueFontSize,
+  valueFontWeight,
+  decimalColor,
+  decimalFontSize,
+  decimalFontWeight,
   style,
 }: AnbAmountProps) => {
   const textStyle = {
@@ -64,9 +77,28 @@ export const AnbAmount = ({
     fontSize: fontSize || defaultFontSize,
     fontWeight: fontWeight || defaultFontWeight,
   };
+
+  const valueStyle = {
+    color: valueColor || textStyle.color,
+    fontSize: valueFontSize || textStyle.fontSize,
+    fontWeight: valueFontWeight || textStyle.fontWeight,
+  };
+
+  console.log(valueStyle);
+
+  const decimalStyle = {
+    color: decimalColor || textStyle.color,
+    fontSize: decimalFontSize || textStyle.fontSize,
+    fontWeight: decimalFontWeight || textStyle.fontWeight,
+  };
+
+  const { value, decimal } = formatAmountWithDecimal(amount, decimalPlaces);
+
   return (
-    <Text style={[textStyle, style]}>
-      {currency} {formatAmount(amount, decimalPlaces)}
-    </Text>
+    <LinearLayout direction={'row'}>
+      <Text style={[textStyle, style]}>{currency} </Text>
+      <Text style={[textStyle, style]}>{value}</Text>
+      <Text style={[decimalStyle, style]}>{decimal}</Text>
+    </LinearLayout>
   );
 };
