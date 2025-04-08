@@ -9,4 +9,7 @@ module.exports = {
       },
     },
   },
+  iosAssets: ['./src/assets/fonts'],
+  androidAssets: ['./src/assets/fonts'],
+  assets: ['./src/assets/fonts'],
 };
