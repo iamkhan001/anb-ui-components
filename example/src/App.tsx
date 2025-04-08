@@ -1,10 +1,9 @@
-import { View, StyleSheet } from 'react-native';
-import { AnbUiComponentsView } from 'anb-ui-components';
+import { View, StyleSheet, Text } from 'react-native';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AnbUiComponentsView color="#32a852" style={styles.box} />
+      <Text>Welcome to the Anb UI Components Example!</Text>
     </View>
   );
 }
