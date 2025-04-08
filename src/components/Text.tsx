@@ -39,10 +39,14 @@ export const AnbText: React.FC<AnbTextProps> = ({
   );
 };
 
-export interface AnbAmountProps extends AnbTextProps {
+export interface AnbAmountProps {
   currency?: string;
   amount: number;
   decimalPlaces?: number;
+  color?: string;
+  fontSize?: number;
+  fontWeight?: TextStyle['fontWeight'];
+  style?: object;
 }
 
 export const AnbAmount = ({
