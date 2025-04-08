@@ -13,7 +13,7 @@ interface LinearLayoutProps {
   justify?: ViewStyle['justifyContent'];
 }
 
-const LinearLayout: React.FC<LinearLayoutProps> = ({
+export const LinearLayout: React.FC<LinearLayoutProps> = ({
   children,
   direction,
   style = {},
@@ -40,5 +40,3 @@ const LinearLayout: React.FC<LinearLayoutProps> = ({
     </View>
   );
 };
-
-export default LinearLayout;

@@ -12,7 +12,7 @@ interface CardProps {
   backgroundColor?: string;
 }
 
-const Card: React.FC<CardProps> = ({
+export const Card: React.FC<CardProps> = ({
   children,
   style,
   elevation = 4,
@@ -49,5 +49,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
-export default Card;
