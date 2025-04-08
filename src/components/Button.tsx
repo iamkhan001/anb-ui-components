@@ -1,27 +1,65 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, type TextStyle } from 'react-native';
+import {
+  defaultBackgroundColor,
+  defaultBorderColor,
+  defaultBorderRadius,
+  defaultBorderWidth,
+  defaultFontSize,
+  defaultFontWeight,
+  defaultPadding,
+  defaultTextColor,
+  type ButtonActions,
+} from '../defaults';
 
 export interface ButtonProps {
-  title: string;
-  onPress: () => void;
+  text: string;
+  textColor?: string;
+  backgroundColor?: string;
+  fontSize?: number;
+  fontWeight?: TextStyle['fontWeight'];
+  padding?: number;
+  borderRadius?: number;
+  borderWidth?: number;
+  borderColor?: string;
+  style?: object;
+  actions?: ButtonActions;
 }
 
-export const Button: React.FC<ButtonProps> = ({ title, onPress }) => {
+export const AnbButton: React.FC<ButtonProps> = ({
+  text,
+  textColor,
+  backgroundColor,
+  fontSize,
+  fontWeight,
+  padding,
+  borderRadius,
+  borderWidth,
+  borderColor,
+  style,
+  actions,
+}) => {
+  const buttonStyle = {
+    backgroundColor: backgroundColor || defaultBackgroundColor,
+    padding: padding || defaultPadding,
+    borderRadius: borderRadius || defaultBorderRadius,
+    borderWidth: borderWidth || defaultBorderWidth,
+    borderColor: borderColor || defaultBorderColor,
+  };
+  const textStyle = {
+    color: textColor || defaultTextColor,
+    fontSize: fontSize || defaultFontSize,
+    fontWeight: fontWeight || defaultFontWeight,
+  };
   return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
-      <Text style={styles.text}>{title}</Text>
+    <TouchableOpacity
+      style={[buttonStyle, style]}
+      onPress={actions?.onPress}
+      onLongPress={actions?.onLongPress}
+      onPressIn={actions?.onPressIn}
+      onPressOut={actions?.onPressOut}
+    >
+      <Text style={textStyle}>{text}</Text>
     </TouchableOpacity>
   );
 };
-
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#2196F3',
-    padding: 12,
-    borderRadius: 8,
-  },
-  text: {
-    color: 'white',
-    textAlign: 'center',
-  },
-});
