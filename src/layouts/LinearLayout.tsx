@@ -25,7 +25,6 @@ export const LinearLayout: React.FC<LinearLayoutProps> = ({
     flexDirection: direction,
     alignItems: align,
     justifyContent: justify,
-    flex: 1,
   };
   const childrenArray = React.Children.toArray(children);
   return (
