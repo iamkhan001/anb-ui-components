@@ -49,7 +49,7 @@ export interface AnbAmountProps {
   color?: string;
   fontSize?: number;
   fontWeight?: TextStyle['fontWeight'];
-  textAlign: TextStyle['textAlign'];
+  textAlign?: TextStyle['textAlign'];
   style?: object;
   valueColor?: string;
   valueFontSize?: number;
@@ -101,7 +101,7 @@ export const AnbAmount = ({
   const { value, decimal } = formatAmountWithDecimal(amount, decimalPlaces);
 
   return (
-    <LinearLayout direction={'row'}>
+    <LinearLayout direction={'row'} align="flex-end">
       <Text style={[textStyle, style]}>{currency} </Text>
       <Text style={[textStyle, style]}>{value}</Text>
       <Text style={[decimalStyle, style]}>{decimal}</Text>
