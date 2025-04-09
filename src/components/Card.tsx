@@ -1,41 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import type { StyleProp } from 'react-native';
-import type { ViewStyle } from 'react-native';
+import { View, StyleSheet, type ViewStyle } from 'react-native';
+import { createViewStyle } from '../utils/style.helper';
 
-interface CardProps {
+interface CardProps extends ViewStyle {
   children: React.ReactNode;
-  style?: StyleProp<ViewStyle>;
-  elevation?: number;
-  padding?: number;
-  borderRadius?: number;
-  backgroundColor?: string;
+  styles?: object[];
 }
 
-export const Card: React.FC<CardProps> = ({
-  children,
-  style,
-  elevation = 4,
-  padding = 16,
-  borderRadius = 12,
-  backgroundColor = '#fff',
-}) => {
+export const Card: React.FC<CardProps> = ({ children, ...rest }) => {
+  const cardStyle = createViewStyle(rest);
+
   return (
-    <View
-      style={[
-        styles.card,
-        {
-          elevation,
-          padding,
-          borderRadius,
-          backgroundColor,
-          shadowOffset: { width: 0, height: elevation / 2 },
-          shadowOpacity: 0.2,
-          shadowRadius: elevation,
-        },
-        style,
-      ]}
-    >
+    <View style={[styles.card, cardStyle, ...(rest.styles || [])]}>
       {children}
     </View>
   );

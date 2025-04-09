@@ -6,16 +6,16 @@ interface GridLayoutProps {
   columns: number;
   children: React.ReactNode;
   gap?: number;
-  style?: ViewStyle;
-  itemStyle?: ViewStyle;
+  containerStyles?: ViewStyle[];
+  itemStyles?: ViewStyle[];
 }
 
 export const GridLayout: React.FC<GridLayoutProps> = ({
   columns,
   children,
   gap = 10,
-  style = {},
-  itemStyle = {},
+  containerStyles = [],
+  itemStyles = [],
 }) => {
   const childrenArray = React.Children.toArray(children);
   const rows = [];
@@ -24,7 +24,10 @@ export const GridLayout: React.FC<GridLayoutProps> = ({
     const rowItems = childrenArray.slice(i, i + columns);
 
     rows.push(
-      <View key={`row-${i}`} style={[styles.row, { marginBottom: gap }]}>
+      <View
+        key={`row-${i}`}
+        style={[styles.row, { marginBottom: gap }, ...containerStyles]}
+      >
         {rowItems.map((child, index) => (
           <View
             key={`item-${i + index}`}
@@ -33,7 +36,7 @@ export const GridLayout: React.FC<GridLayoutProps> = ({
                 flex: 1 / columns,
                 marginRight: index < rowItems.length - 1 ? gap : 0,
               },
-              itemStyle,
+              ...itemStyles,
             ]}
           >
             {child}
@@ -43,7 +46,7 @@ export const GridLayout: React.FC<GridLayoutProps> = ({
     );
   }
 
-  return <View style={[style]}>{rows}</View>;
+  return <View style={[...containerStyles]}>{rows}</View>;
 };
 
 const styles = StyleSheet.create({
