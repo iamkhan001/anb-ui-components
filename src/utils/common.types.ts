@@ -6,10 +6,13 @@ export interface ViewActions {
 }
 
 export interface BaseTextProps extends ViewActions, TextStyle {
-  text: string;
+  text?: string;
   textStyles?: object[];
 }
 
-export interface BaseButtonProps extends BaseTextProps, ViewStyle {
-  buttonStyles?: object[];
+export interface BaseButtonProps extends BaseTextProps {
+  buttonStyle: ViewStyle;
+  disableButtonStyle?: ViewStyle;
+  extraStyles?: object[];
+  enabled?: boolean;
 }
