@@ -6,6 +6,7 @@ import {
   defaultDecimalPlaces,
   defaultFontSize,
   defaultFontWeight,
+  defaultTextAlign,
   defaultTextColor,
 } from '../defaults';
 import { formatAmountWithDecimal } from '../utils/number.utils';
@@ -48,6 +49,7 @@ export interface AnbAmountProps {
   color?: string;
   fontSize?: number;
   fontWeight?: TextStyle['fontWeight'];
+  textAlign: TextStyle['textAlign'];
   style?: object;
   valueColor?: string;
   valueFontSize?: number;
@@ -64,6 +66,7 @@ export const AnbAmount = ({
   color,
   fontSize,
   fontWeight,
+  textAlign,
   valueColor,
   valueFontSize,
   valueFontWeight,
@@ -76,12 +79,14 @@ export const AnbAmount = ({
     color: color || defaultTextColor,
     fontSize: fontSize || defaultFontSize,
     fontWeight: fontWeight || defaultFontWeight,
+    textAlign: textAlign || defaultTextAlign,
   };
 
   const valueStyle = {
     color: valueColor || textStyle.color,
     fontSize: valueFontSize || textStyle.fontSize,
     fontWeight: valueFontWeight || textStyle.fontWeight,
+    textAlign: textAlign || defaultTextAlign,
   };
 
   console.log(valueStyle);
@@ -90,6 +95,7 @@ export const AnbAmount = ({
     color: decimalColor || textStyle.color,
     fontSize: decimalFontSize || textStyle.fontSize,
     fontWeight: decimalFontWeight || textStyle.fontWeight,
+    textAlign: textAlign || textStyle.textAlign,
   };
 
   const { value, decimal } = formatAmountWithDecimal(amount, decimalPlaces);

@@ -9,3 +9,4 @@ export const defaultBorderWidth = 0;
 export const defaultFontWeight = '400';
 export const defaultCurrency = 'SAR';
 export const defaultDecimalPlaces = 2;
+export const defaultTextAlign = undefined;
