@@ -8,7 +8,7 @@ export const AnbButton: React.FC<BaseButtonProps> = ({ ...rest }) => {
   const textStyle = createTextStyle(rest);
   return (
     <TouchableOpacity
-      style={[buttonStyle]}
+      style={[buttonStyle, ...(rest.buttonStyles || [])]}
       onPress={rest.onPress}
       onLongPress={rest.onLongPress}
     >

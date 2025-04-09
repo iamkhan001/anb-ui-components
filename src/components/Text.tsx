@@ -10,7 +10,7 @@ export const AnbText: React.FC<BaseTextProps> = ({ ...rest }) => {
 
   return (
     <TouchableOpacity onPress={rest.onPress} onLongPress={rest.onLongPress}>
-      <Text style={[textStyle]}>{rest.text}</Text>
+      <Text style={[textStyle, ...(rest.textStyles || [])]}>{rest.text}</Text>
     </TouchableOpacity>
   );
 };
