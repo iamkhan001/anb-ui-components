@@ -120,4 +120,4 @@ const CustomTextInput: React.FC<InputProps> = ({
   );
 };
 
-export default CustomTextInput;
+export { CustomTextInput };
